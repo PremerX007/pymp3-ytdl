@@ -172,3 +172,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Local Download folder 
+downloaded_music/
+
+# Local song list files
+*.txt

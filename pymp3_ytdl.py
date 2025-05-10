@@ -40,7 +40,19 @@ from yt_dlp.utils import sanitize_filename as ydlp_sanitize_filename
 
 # --- Configuration ---
 OUTPUT_DIRECTORY_NAME = "downloaded_music"
-PERFORM_CUSTOM_RENAMING = False
+
+# Option 1: Single flag for custom renaming
+PERFORM_CUSTOM_RENAMING = (
+    False  # True to enable custom renaming, False to keep yt-dlp's name
+)
+
+# Option 2: More granular control if PERFORM_CUSTOM_RENAMING is True
+# This only takes effect if PERFORM_CUSTOM_RENAMING is True
+# True: Use yt-dlp's strict sanitization (removes most non-ASCII)
+# False: Use yt-dlp's less strict sanitization (tries to keep Unicode like Thai)
+SANITIZE_WITH_RESTRICTED_MODE = (
+    False  # Default to False for keep Thai character (not maximum safety)
+)
 
 # --- Setup Logging ---
 # Create a logger instance
@@ -303,9 +315,22 @@ def download_mp3_from_urls(
                             logger.debug(
                                 f"  Attempting custom renaming for: {os.path.basename(downloaded_mp3_path)}"
                             )
-                            desired_filename_base = ydlp_sanitize_filename(
-                                title_for_metadata, restricted=True
-                            )
+                            # Apply sanitization based on SANITIZE_WITH_RESTRICTED_MODE
+                            if SANITIZE_WITH_RESTRICTED_MODE:
+                                logger.debug(
+                                    "    Using sanitize_filename with restricted=True"
+                                )
+                                desired_filename_base = ydlp_sanitize_filename(
+                                    title_for_metadata, restricted=True
+                                )
+                            else:
+                                logger.debug(
+                                    "    Using sanitize_filename with restricted=False"
+                                )
+                                desired_filename_base = ydlp_sanitize_filename(
+                                    title_for_metadata, restricted=False
+                                )
+
                             desired_filename_mp3 = f"{desired_filename_base}.mp3"
                             desired_filepath_mp3 = os.path.join(
                                 os.path.dirname(downloaded_mp3_path),
