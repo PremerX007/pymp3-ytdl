@@ -1,0 +1,55 @@
+[project]
+name = "pymp3-ytdl"
+version = "0.1.0"
+description = "Download URLs to MP3 with metadata and cover art using yt-dlp"
+readme = "README.md"
+license = { text = "GPL-2.0-only" }
+authors = [
+  { name = "PremerX007" }
+]
+requires-python = ">=3.10"
+dependencies = [
+  "yt-dlp>=2025.4.30",
+  "mutagen>=1.47.0",
+  "requests>=2.32.0",
+  "pillow>=11.2.0",
+  "imageio-ffmpeg>=0.5.1",
+]
+keywords = ["youtube", "yt-dlp", "mp3", "downloader", "ffmpeg"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Sound/Audio",
+  "Topic :: Internet :: WWW/HTTP"
+]
+
+[project.urls]
+Homepage = "https://github.com/PremerX007/pymp3-ytdl"
+Repository = "https://github.com/PremerX007/pymp3-ytdl"
+Issues = "https://github.com/PremerX007/pymp3-ytdl/issues"
+
+[project.scripts]
+pymp3-ytdl = "pymp3_ytdl.cli:main"
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.15.8",
+]
+
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pymp3_ytdl"]
+
+[tool.uv]
+package = true
