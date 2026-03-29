@@ -1,5 +1,9 @@
 # pymp3-ytdl
 
+[![PyPI version](https://img.shields.io/pypi/v/pymp3-ytdl.svg)](https://pypi.org/project/pymp3-ytdl/)
+[![Python versions](https://img.shields.io/pypi/pyversions/pymp3-ytdl.svg)](https://pypi.org/project/pymp3-ytdl/)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://github.com/PremerX007/pymp3-ytdl/blob/main/LICENSE)
+
 pymp3-ytdl is a Python CLI and library that downloads audio from supported video URLs via yt-dlp, converts to MP3, applies ID3 metadata, and embeds cover art.
 
 ## Highlights
@@ -112,3 +116,7 @@ GPL-2.0-only. See LICENSE.
 ## Disclaimer
 
 Use this tool only for content you are legally allowed to access and convert.
+
+## Contributing and Issues
+
+Found a bug or have a feature request? Please open an issue on the [GitHub repository](https://github.com/PremerX007/pymp3-ytdl/issues). Pull requests are also welcome!
